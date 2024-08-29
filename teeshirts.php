@@ -22,41 +22,27 @@
             </nav>
             <nav class="barre-logo">
                 <label for="cc-btn-responsive" class="material-icons burger">menu</label>
-                <a class="logo" href="index.html"><img src="images/logo.png" alt="Accueil"></a>
-                <a class="material-icons panier" href="panier.html">shopping_cart</a>
+                <a class="logo" href="index.php"><img src="images/logo.png" alt="Accueil"></a>
+                <a class="material-icons panier" href="panier.php">shopping_cart</a>
                 <input class="recherche" type="search" name="motscles" placeholder="Recherche">
             </nav>
             <input type="checkbox" id="cc-btn-responsive">
             <nav class="principale">
                 <label for="cc-btn-responsive" class="menu-controle material-icons">close</label>
-                <a href="teeshirts.html">Teeshirts</a>
-                <a href="casquettes.html">Casquettes</a>
-                <a href="hoodies.html">Hoodies</a>
+                <a href="teeshirts.php" class="actif">Teeshirts</a>
+                <a href="casquettes.php">Casquettes</a>
+                <a href="hoodies.php">Hoodies</a>
                 <span class="separateur"></span>
-                <a href="aide.html">Aide</a>
-                <a href="apropos.html">À propos de nous</a>
+                <a href="aide.php">Aide</a>
+                <a href="apropos.php">À propos de nous</a>
             </nav>
         </header>
-        <main class="page-accueil">
+        <main class="page-teeshirts">
             <article class="amorce">
-                <h1>Teeshirts, hoodies, et casquettes fabriqués au Québec 💯</h1>
-                <h2>Conçus au TIM avec ❤️</h2>
-                <h4>/** avec un p'tit peu d'aide de DALL-E 😉 **/</h4>
+                <h1>Nos teeshirts</h1>
             </article>
             <article class="principal">
-                <p>
-                    Aujourd'hui, le teeshirt est un vêtement incontournable dans 
-                    le garde-robe de chacun. Et à l’aire où la question 
-                    environnementale se pose plus que jamais, on préfère les 
-                    teeshirts fabriqués au Québec afin de réduire l'impact 
-                    environnemental et mettre en avant l’artisanat local.
-                </p>
-                <p>
-                    Teeshirt en V, col rond, ample ou ajusté, à manches courtes 
-                    ou à manches longues pour les plus frileux, uni ou à motifs 
-                    pour styliser une tenue… Le teeshirt est disponible dans une 
-                    variété de couleurs, de styles et de motifs.
-                </p>
+                À venir...
             </article>
         </main>
         <footer>
@@ -66,17 +52,17 @@
                     <h3>Vos achats</h3>
                     <nav>
                         <a href="faq.com" class="faq">Foire aux questions</a>
-                        <a href="livraison.html" class="livraison">Livraison de votre colis</a>
-                        <a href="conditions.html" class="conditions">Conditions de vente</a>
-                        <a href="confidentialite.html" class="confidentialite">Politique de confidentialité</a>
+                        <a href="livraison.php" class="livraison">Livraison de votre colis</a>
+                        <a href="conditions.php" class="conditions">Conditions de vente</a>
+                        <a href="confidentialite.php" class="confidentialite">Politique de confidentialité</a>
                     </nav>
                 </section>
                 <section class="apropos">
                     <h3>À propos de teeTIM</h3>
                     <nav>
                         <a href="compagnie.com" class="faq">La compagnie</a>
-                        <a href="equipe.html" class="livraison">L'équipe</a>
-                        <a href="emploi.html" class="conditions">Emplois</a>
+                        <a href="equipe.php" class="livraison">L'équipe</a>
+                        <a href="emploi.php" class="conditions">Emplois</a>
                     </nav>
                 </section>
                 <section class="coordonnees">
@@ -87,7 +73,7 @@
                     </nav>
                 </section>
             </div>
-            <p class="da">&copy; Tous droits réservés, teeTIM 2024</p>
+            <p class="da">&copy; Tous droits réservés, teeTIM <?php echo date("Y") ?></p>
         </footer>
     </div>
     

@@ -1,5 +1,5 @@
 <?php
-    // Test
+    
     // Lire le fichier JSON contenant les textes
     // Étape 1 : "lire" le fichier "i18n/fr.json"
     // et affecter son contenu 

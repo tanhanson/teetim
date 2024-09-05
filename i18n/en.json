@@ -1,16 +1,37 @@
 {
   "entete": {
     "altLogo": "Home",
-    "placeholderRecherche": "Search"
-    
+    "placeholderRecherche": "Search",
+    "menuTeeshirts": "T-Shirts",
+    "menuCasquettes": "Caps",
+    "menuHoodies": "Hoodies",
+    "menuAide": "Help",
+    "menuNous": "About Us"
   },
   "pp": {
-
+    "achatsTitre": "Your Purchases",
+    "navAchatsFaq": "FAQ",
+    "navAchatsLivraison": "Shipping Your Package",
+    "navAchatsConditions": "Terms of Sale",
+    "navAchatsConfidentialite": "Privacy Policy",
+    "aProposTitre": "About teeTIM",
+    "aProposCompagnie": "The Company",
+    "aProposEquipe": "The Team",
+    "aProposEmplois": "Jobs",
+    "joindreTitre": "Contact Us",
+    "joindreTelEtiquette": "Toll-Free: ",
+    "joindreCourrielEtiquette": "Email: ",
+    "droits": "All rights reserved, teeTIM"
   },
   "accueil": {
-
+    "amorceTitre": "T-Shirts, Hoodies, and Caps Made in Quebec 💯",
+    "amorceSousTitre": "Designed at TIM with ❤️",
+    "amorceSousTitre2": "with a little help from DALL-E 😉",
+    "para1": "Today, the T-shirt is an essential garment in everyone's wardrobe. And in an era where environmental concerns are more relevant than ever, we prefer T-shirts made in Quebec to reduce environmental impact and promote local craftsmanship.",
+    "para2": "V-neck, crew neck, loose or fitted, short-sleeved or long-sleeved for the colder days, solid or patterned to style an outfit... The T-shirt is available in a variety of colors, styles, and patterns."
   },
   "teeshirts": {
-
+    "titrePage": "Our T-Shirts",
+    "aVenir": "Coming Soon..."
   }
 }

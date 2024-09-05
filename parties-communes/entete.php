@@ -1,9 +1,22 @@
 <?php
+    // Déterminer le choix de lamgue de l'utilisateur
+    //print_r($_GET);
+
+    // Langue par défaut
+
+    $langue = 'fr';
+
+    // Langue spéficiée dans l'URL ( ca veut dire l'utilisateur a )
+    if (isset($_GET['lan'])){
+        $langue = $_GET ['lan'];
+    }
+    
+    echo $langue;
     
     // Lire le fichier JSON contenant les textes
     // Étape 1 : "lire" le fichier "i18n/fr.json"
     // et affecter son contenu 
-    $textesJSON = file_get_contents("i18n/fr.json");
+    $textesJSON = file_get_contents("i18n/" . $langue . ".json");
     // Test :
     // echo $textes;
 
@@ -11,9 +24,13 @@
     // pour remettre les textes dans la page Web aux bons endroits.
     $textes = json_decode($textesJSON);
 
+    // Raccourci pour les parties communes
     $_ent = $textes -> entete;
     $_pp = $textes -> pp;
 
+    // Raccourci pour les pages spécifiques
+
+    $_ = $textes -> $page;
     // Test
 
     //print_r($textesConvertis);
@@ -42,9 +59,8 @@
     <div class="conteneur">
         <header>
             <nav class="barre-haut">
-                <a href="#">en</a>
-                <a href="#">es</a>
-                <a class="actif" href="#">fr</a>
+                <a href="?lan=en">en</a>
+                <a class="actif" href="?lan=fr">fr</a>
             </nav>
             <nav class="barre-logo">
                 <label for="cc-btn-responsive" class="material-icons burger">menu</label>

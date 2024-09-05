@@ -8,10 +8,10 @@
 ?>
 <main class="page-teeshirts">
     <article class="amorce">
-        <h1>Nos teeshirts</h1>
+        <h1><?= $_->titrePage ?></h1>
     </article>
     <article class="principal">
-        À venir...
+        <?= $_->aVenir ?>
     </article>
 </main>
 <?php include("parties-communes/pied2page.php"); ?>

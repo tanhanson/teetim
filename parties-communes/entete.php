@@ -1,17 +1,64 @@
 <?php
+    // Énumérer le contenu d'un dossier
+    //$contenu = scandir ('i18n');
+    //print_r($contenu);
+
+    // Créer un tableau des codes de langues disponibles
+
+    $languesDispo = [];
+
+    // Remplir le tableau avec les codes obtenus des noms des fichiers JSON
+    // présents dans e dossier i18n
+    $contenuI18n = scandir('i18n');
+
+    for ($i = 0; $i <count($contenuI18n); $i++){
+        $fichier = $contenuI18n[$i];
+    
+    if ($fichier != '.' && $fichier != '..'){
+
+        $languesDispo[] = substr($fichier, 0, 2)."<br>";
+    }
+}
+    // Test : afficher lMinfo sur le tableau des langues disponibles
+    print_r($languesDispo);
+
+    // Test : le "timestamp" de maintenant
+    //echo time ();
+
+    // setcookie('patati', 'patata', time() +700*24*3600);
+    // Test : la "jarre de cookies" envoyée par le "browser
+    //print_r($_COOKIE);
+
+
     // Déterminer le choix de lamgue de l'utilisateur
     //print_r($_GET);
 
-    // Langue par défaut
-
+    // 1. Langue par défaut
     $langue = 'fr';
 
-    // Langue spéficiée dans l'URL ( ca veut dire l'utilisateur a )
+    // 2. Langue mémorisée dans un témoin HTTP (s'il existe !!!)
+
+     if(isset($_COOKIE['choixLangue'])){
+      $langue =$_COOKIE['choixLangue'];  
+     }
+
+    
+    // 3. Langue spéficiée dans l'URL ( ca veut dire l'utilisateur a )
     if (isset($_GET['lan'])){
         $langue = $_GET ['lan'];
+
+        // Mémoriser ce choix de langue
+        // DONC : stocker la valeur du code de langue dans un témoin HTTP
+        setcookie('choixLangue', $langue, time()+30 *24*3600 );
+
+        //setcookie('unAutreTest', 'widjaodjasidadawdasdawdiad', time ()+10);
+
+        //setcookie('patati', '', time()-1);
+
+
     }
     
-    echo $langue;
+    //echo $langue;
     
     // Lire le fichier JSON contenant les textes
     // Étape 1 : "lire" le fichier "i18n/fr.json"
@@ -59,9 +106,20 @@
     <div class="conteneur">
         <header>
             <nav class="barre-haut">
-                <a href="?lan=en">en</a>
-                <a class="actif" href="?lan=fr">fr</a>
+    <!-- Générer un 'bouton' (lien HTML) pour chaque code de langue dans le tableau $languesDispo !-->
+
+        <!-- Début boucle !-->
+                <a 
+                class="<?php if($langue == 'fr'){echo 'actif';} ?>" 
+                href="?lan=fr"
+                >
+                fr
+
+                </a>
+
+                  <!-- Fin boucle !-->
             </nav>
+
             <nav class="barre-logo">
                 <label for="cc-btn-responsive" class="material-icons burger">menu</label>
                 <a class="logo" href="index.php"><img src="images/logo.png" alt="<?php echo $textes->entete->altLogo; ?>"></a>

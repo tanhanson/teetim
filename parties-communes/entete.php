@@ -11,16 +11,36 @@
     // présents dans e dossier i18n
     $contenuI18n = scandir('i18n');
 
-    for ($i = 0; $i <count($contenuI18n); $i++){
-        $fichier = $contenuI18n[$i];
-    
-    if ($fichier != '.' && $fichier != '..'){
+    // Solution 1 : avec une boucle standard (avec compteur)
+    // donc du ocde dit "impératif" (moins souhaitable)
 
-        $languesDispo[] = substr($fichier, 0, 2)."<br>";
+    // for ($i = 0; $i <count($contenuI18n); $i++){
+    //     $fichier = $contenuI18n[$i];
+
+    //     // Si le ficher n'est pas '.' ou '..' 
+    
+    // if ($fichier != '.' && $fichier != '..'){
+
+    //     $languesDispo[] = substr($fichier, 0, 2);
+    //}
+//}
+
+// Solution 2 : avec une boucle "itérable" ( sans compteur )
+// Donc du code dit "expressif" ou "déclaratif" (plus souhaitable)
+// (En JavaScript, cette boucle est similaire à for...of)
+
+foreach($contenuI18n as $nomFichier) {
+
+    // Pas une bonen stratégie : il faut filtrer
+    // Tout ce qui ne ressemble pas à 'll.json' (où 'll' sont deux lettres)
+    // Solution possible serait d'utiliser les expressions régulières (RegExp)
+    if ($nomFichier != '.' && $nomFichier != '..' ){
+        $languesDispo[] = substr($nomFichier,0,2);
     }
 }
+
     // Test : afficher lMinfo sur le tableau des langues disponibles
-    print_r($languesDispo);
+    //print_r($languesDispo);
 
     // Test : le "timestamp" de maintenant
     //echo time ();
@@ -38,13 +58,23 @@
 
     // 2. Langue mémorisée dans un témoin HTTP (s'il existe !!!)
 
-     if(isset($_COOKIE['choixLangue'])){
+    // ATTENTION : code susceptible d'injection !!!!!
+    // Programmez défensivement !!!
+    // Ne faites pas confiance à ce qui vient de l'utilisateur
+
+
+     if(isset($_COOKIE['choixLangue'])
+         && in_array($_COOKIE['choixLangue'], $languesDispo)){
       $langue =$_COOKIE['choixLangue'];  
      }
 
     
     // 3. Langue spéficiée dans l'URL ( ca veut dire l'utilisateur a )
-    if (isset($_GET['lan'])){
+    
+
+    // ATTENTION : programmez défensivement !!!
+    // Ne jamais faire confiance aux valeurs qui viennent du UI (utilisateur)
+    if (isset($_GET['lan']) && in_array($_GET['lan'], $languesDispo)){
         $langue = $_GET ['lan'];
 
         // Mémoriser ce choix de langue
@@ -89,7 +119,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= $langue ?>" dir = "ltr">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,8 +127,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>teeTIM // fibre naturelle ... conception artificielle</title>
-    <meta name="description" content="Page d'accueil du concepteur de vêtements 100% fait au Québec, conçus par les étudiants du TIM à l'aide de designs produits par intelligence artificielle, et fabriqués avec des fibres 100% naturelles et biologiques.">
+    <title><?= $_-> metaTitre ?></title>
+    <meta name="description" content="<?= $_->metaDesc ?>">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="images/favicon.png" />
 </head>
@@ -109,14 +139,20 @@
     <!-- Générer un 'bouton' (lien HTML) pour chaque code de langue dans le tableau $languesDispo !-->
 
         <!-- Début boucle !-->
+
+
+        <?php foreach($languesDispo as $codeLangue) :  ?>
+
                 <a 
-                class="<?php if($langue == 'fr'){echo 'actif';} ?>" 
-                href="?lan=fr"
-                >
-                fr
+                class="<?php if($langue == $codeLangue){echo 'actif';} ?>" 
+                href="?lan=<?= $codeLangue ?>"
+                title = "A venir">
+                
+                
+                <?= $codeLangue ?>
 
                 </a>
-
+     <?php endforeach  ?>
                   <!-- Fin boucle !-->
             </nav>
 
